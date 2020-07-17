@@ -12,3 +12,19 @@ class Mouse:
     def marca(self, valor):
         self.__marca = valor
 
+    @property
+    def color(self):
+        return self.__color
+
+    @color.setter
+    def color(self, valor):
+        self.__color = valor
+
+    @property
+    def tipo(self):
+        return self.__tipo
+
+    @tipo.setter
+    def tipo(self, valor):
+        self.__tipo = valor
+
