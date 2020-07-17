@@ -28,3 +28,12 @@ class Mouse:
     def tipo(self, valor):
         self.__tipo = valor
 
+    def imprimir(self):
+        print(f"""Marca: {self.marca}
+Color: {self.color}
+Tipo: {self.tipo}""")
+
+mouse = Mouse("Logitech", "Negro", "NA")
+mouse2 = Mouse("Razer", "Verde", "Gamer")
+
+mouse.imprimir()
