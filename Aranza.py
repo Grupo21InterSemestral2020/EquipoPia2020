@@ -1,9 +1,13 @@
 class mouse:
     def __int__(self,marca,color,tipo):
-        self._marca= marca
-        self._color= color
-        self._tipo= tipo
+        self.__marca= marca
+        self.__color= color
+        self.__tipo= tipo
 
     @property
     def marca(self):
-        return self._marca
+        return self.__marca
+
+    @property
+    def color(self):
+        return self.__color
