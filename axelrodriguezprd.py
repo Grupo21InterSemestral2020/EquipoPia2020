@@ -20,4 +20,11 @@ class Mouse:
     def color(self, valor):
         self.__color = valor
 
+    @property
+    def tipo(self):
+        return self.__tipo
+
+    @tipo.setter
+    def tipo(self, valor):
+        self.__tipo = valor
 
