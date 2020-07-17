@@ -16,4 +16,12 @@ def tipo(self):
 def color(self):
     return self._color
 
+@marca.setter
+def marca(self,marca)
+
+@tipo.setter
+def tipo(self,tipo)
+
+@color.setter(self,color)
+def color(self,color)
 
