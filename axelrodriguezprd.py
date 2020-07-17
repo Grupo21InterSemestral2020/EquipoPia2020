@@ -37,3 +37,4 @@ mouse = Mouse("Logitech", "Negro", "NA")
 mouse2 = Mouse("Razer", "Verde", "Gamer")
 
 mouse.imprimir()
+mouse2.imprimir()
