@@ -11,3 +11,7 @@ class mouse:
     @property
     def color(self):
         return self.__color
+
+     @property
+    def tipo(self):
+        return self.__tipo
