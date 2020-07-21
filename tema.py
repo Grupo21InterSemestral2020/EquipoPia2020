@@ -1,20 +1,21 @@
-class tema:
-    def __int__(self,idTema,Nombre):
+class Tema:
+
+    def __init__(self, idTema, nombre):
         self.__idTema = idTema
-        self.__Nombre = Nombre
+        self.__nombre = nombre
 
     @property
     def idTema(self):
         return self.__idTema
 
     @idTema.setter
-    def idTema(self,valor):
+    def idTema(self, valor):
         self.__idTema = valor
 
     @property
-    def Nombre(self):
-        return self.__Nombre
+    def nombre(self):
+        return self.__nombre
 
     @Nombre.setter
-    def Nombre(setter,valor):
-        self.__Nombre = valor
+    def nombre(setter, valor):
+        self.__nombre = valor
