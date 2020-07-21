@@ -28,4 +28,8 @@ class mouse:
     def tipo(self,valor):
         return self.__tipo = valor
 
-    def 
+    def imprimir(self):
+        print(f"marca: {self.__marca},color: {self.__color},tipo: {self.__tipo}")
+
+mouse = Mouse("Vochito","Rojo","Pretzel")
+mouse = imprimir()
