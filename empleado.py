@@ -29,14 +29,19 @@ class Empleado:
     def direccion(self, valor):
         self.__direccion = valor
 
-    @staticmethod
+    @staticmethod #Listo
     def agregarEmpleado():
         while True:
-            idEmpleado = input("Ingresa el ID: ")
+            while True:
+                try:
+                    idEmpleado = int(input("Ingresa el ID: "))
+                    break
+                except:
+                    print("\n¡Error, digite solo enteros!\nIntente de nuevo...\n")
             with open("./archivos/empleados.txt","r",encoding="utf8") as empleadosTXT:
                 lineas = empleadosTXT.readlines()
                 for linea in lineas:
-                    if idEmpleado in linea:
+                    if str(idEmpleado) == linea.split("|")[0]:
                         print("\nID ya existe!\n")
                         empleadosTXT.close()
                         break
@@ -52,15 +57,31 @@ class Empleado:
                     empleadosTXT.close()
                     break
 
-    @staticmethod
+    @staticmethod #Falta agregar si el usuario no existe imprimirlo por pantalla
     def borrarEmpleado():
-        pass
-
-
-    def modificarEmpleado(self):
-        pass
+        nuevaLista = []
+        while True:
+            try:
+                idEmpleado = int(input("ID a borrar: "))
+                break
+            except:
+                print("\n¡Error, digite solo enteros!\nIntente de nuevo...\n")
+        with open("./archivos/empleados.txt","r", encoding="utf8") as empleadosTXT:
+            for linea in empleadosTXT:
+                if linea.split("|")[0] != str(idEmpleado):
+                    nuevaLista.append(linea)
+            empleadosTXT.close()
+            with open("./archivos/empleados.txt","w", encoding="utf8") as empleadosW:
+                for n in nuevaLista:
+                    empleadosW.write(str(n))
+            print("Borrado exitosamente\n")
+            empleadosW.close()
 
     @staticmethod
+    def modificarEmpleado():
+        pass
+
+    @staticmethod #Listo
     def mostrarEmpleados():
         print(f"{'ID':<5}{'NOMBRE':^10}{'DIRECCION':>15}")
         print("_"*31)
@@ -70,9 +91,9 @@ class Empleado:
                 print(f"{datos[0]:<5}{datos[1]:^10}{datos[2]:>15}")
         empleadosTXT.close()
 
-
-
+    @staticmethod
     def buscarEmpleado(self):
         pass
+
 
 
