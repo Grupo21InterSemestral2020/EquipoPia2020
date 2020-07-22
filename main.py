@@ -10,16 +10,14 @@ while True:
             
         while True:
 
-            print("\nMenu Empleados\n\n1.- Agregar empleado\n2.- Borrar empleado\n3.- Modificar registro de empleado\n4.- Consultar todo \n5.- Ver datealles de empleado\n6.- Volver al menu principal\n")
+            print("\nMenu Empleados\n\n1.- Agregar empleado\n2.- Borrar empleado\n3.- Modificar registro de empleado\n4.- Consultar todo \n5.- Ver datalles de empleado\n6.- Volver al menu principal\n")
             eleccionEmpleado = int(input("Elige una opcion: "))
 
             if eleccionEmpleado == 1:
                 Empleado.agregarEmpleado()
 
-
             elif eleccionEmpleado == 2:
-                #Empleado.borrarEmpleado()
-                pass
+                Empleado.borrarEmpleado()
 
             elif eleccionEmpleado == 3:
                 #modificarEmpleado()
@@ -27,7 +25,6 @@ while True:
 
             elif eleccionEmpleado == 4:
                 Empleado.mostrarEmpleados()
-                
 
             elif eleccionEmpleado == 5:
                 #buscarEmpleado()
@@ -75,5 +72,5 @@ while True:
     else:
         print("\nError, opcion invalida!")
     #except:
-    #    print("Error: Ingrese solo numeros enteros")
-        
+    #    print("Error: Ingrese solo numeros enteros").
+

@@ -16,6 +16,6 @@ class Tema:
     def nombre(self):
         return self.__nombre
 
-    @Nombre.setter
-    def nombre(setter, valor):
+    @nombre.setter
+    def nombre(self, valor):
         self.__nombre = valor

@@ -1,38 +1,39 @@
-class video:
-    def __int__(self,idVideo,Nombre,url,FechaPublicacion):
+class Video:
+
+    def __init__(self, idVideo, nombre, url, fechaPublicacion):
         self.__idVideo = idVideo
-        self.__Nombre = Nombre
+        self.__nombre = nombre
         self.__url = url
-        self.__FechaPublicacion = FechaPublicacion
+        self.__fechaPublicacion = fechaPublicacion
 
     @property
     def idVideo(self):
         return self.__idVideo
 
     @idVideo.setter
-    def idVideo(self,valor):
+    def idVideo(self, valor):
         self.__idVideo = valor
 
     @property
-    def Nombre(self):
-        return self.__Nombre
+    def nombre(self):
+        return self.__nombre
 
-    @Nombre.setter
-    def Nombre(self,valor):
-        self.__Nombre = valor
+    @nombre.setter
+    def nombre(self, valor):
+        self.__nombre = valor
 
     @property
     def url(self):
         return self.__url
 
     @url.setter
-    def url(self,valor):
+    def url(self, valor):
         self.__url = valor
 
     @property
-    def FechaPublicacion(self):
-        return self.__FechaPublicacion
+    def fechaPublicacion(self):
+        return self.__fechaPublicacion
 
-    @FechaPublicacion.setter
-    def FechaPublicacion(self,valor):
-        self.__FechaPublicacion = valor
+    @fechaPublicacion.setter
+    def fechaPublicacion(self, valor):
+        self.__fechaPublicacion = valor
