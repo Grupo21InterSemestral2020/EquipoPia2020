@@ -56,12 +56,21 @@ class Empleado:
     def borrarEmpleado():
         pass
 
+
     def modificarEmpleado(self):
         pass
 
     @staticmethod
     def mostrarEmpleados():
-        pass
+        print(f"{'ID':<5}{'NOMBRE':^10}{'DIRECCION':>15}")
+        print("_"*31)
+        with open("./archivos/empleados.txt", encoding="utf8") as empleadosTXT:
+            for linea in empleadosTXT:
+                datos = linea.strip().split('|')
+                print(f"{datos[0]:<5}{datos[1]:^10}{datos[2]:>15}")
+        empleadosTXT.close()
+
+
 
     def buscarEmpleado(self):
         pass
