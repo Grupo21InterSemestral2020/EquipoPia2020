@@ -23,23 +23,28 @@ class Tema:
     @staticmethod
     def agregarTema():
         while True:
-            idTema = input("Ingresa el ID: ")
-            with open#chale no se
-            lineas = temaTXT.readlines()
-            for linea in lineas:
-                if idTema in linea:
+            while True:
+             try:
+               idTema = int(input("Ingresa el ID: "))
+               break
+             except:
+                 print("\n¡Error, digite solo enteros!\nIntente de nuevo...\n")
+            with open("./archivos/tema.txt","r",encoding="utf8")as temaTXT:
+             lineas = temaTXT.readlines()
+             for linea in lineas:
+               if str(idTema) == linea.split("|")[0]:
                     print("\nID ya existe!\n")
                         temaTXT.close()
                         break
                 else:
                     nombre = input("Nombre: ")
-                    #Tema(idTema,nombre)
-                    #temaTXT = open("./archivos/empleados.txt", "a", encoding = "utf8")
-                    #temaTXT.write(f"{idTema}|{nombre}|\n")
-                    #print("="*31)
-                    #print("\nEmpleado agregado exitosamente!\n")
-                    #print("="*31)
-                    #temaTXT.close()
+                    Tema(idTema,nombre)
+                    temaTXT = open("./archivos/tema.txt", "a", encoding = "utf8")
+                    temaTXT.write(f"{idTema}|{nombre}|\n")
+                    print("="*31)
+                    print("\nTema agregado exitosamente!\n")
+                    print("="*31)
+                    temaTXT.close()
                     break
 
     @staticmethod
