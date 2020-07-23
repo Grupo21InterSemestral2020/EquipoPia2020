@@ -79,14 +79,14 @@ class Empleado:
 
     @staticmethod #test v1 (falta verificacion de ID)
     def modificarEmpleado():
-        idEmpleado = input("Ingresa el ID a modificar")
-        eleccionMod = input("¿Que dato quieres modificar?")
+        idEmpleado = input("Ingresa el ID a modificar: ")
+        eleccionMod = input("¿Que dato quieres modificar?\n1.- Nombre\n2.- Direccion\nIngresa una opcion: ")
         if eleccionMod == "1":
             nombre = input("Ingresa el nuevo nombre: ")
         elif eleccionMod == "2":
             direccion = input("Ingresa la nueva direccion: ")
         else:
-            print("Ingresa una opcion valida")
+            print("Ingresa una opcion valida!")
         listaCambios = []
         listaCambios2 = []
         empleadosTXT = open("./archivos/empleados.txt","r",encoding="utf8")
