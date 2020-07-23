@@ -49,7 +49,7 @@ class Curso:
                     descripcion = input("Descripcion: ")
                     idEmpleado = int(input("Ingrese Id del empleado: "))
                     Curso(idCurso, descripcion, idEmpleado)
-                    cursosTXT = open("./archivos/curso.txt", "a", encoding = "utf8")
+                    cursosTXT = open("./archivos/cursos.txt", "a", encoding = "utf8")
                     cursosTXT.write(f"{idCurso}|{descripcion}|{idEmpleado}\n")
                     print("="*31)
                     print("\nCurso agregado exitosamente!\n")
