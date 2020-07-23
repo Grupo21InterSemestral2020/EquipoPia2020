@@ -1,4 +1,5 @@
 from empleado import Empleado
+from tema import Tema
 
 while True:
 
@@ -6,34 +7,29 @@ while True:
     #try:
     eleccion = int(input("Elige una opcion: "))
 
-    if eleccion == 1:
-            
+    if eleccion == 1: #Se despliega el submenú de Empleados
         while True:
-
             print("\nMenu Empleados\n\n1.- Agregar empleado\n2.- Borrar empleado\n3.- Modificar registro de empleado\n4.- Consultar todo \n5.- Ver datalles de empleado\n6.- Volver al menu principal\n")
-            eleccionEmpleado = int(input("Elige una opcion: "))
+            eleccion = int(input("Elige una opcion: "))
 
-            if eleccionEmpleado == 1:
+            if eleccion == 1:
                 Empleado.agregarEmpleado()
 
-            elif eleccionEmpleado == 2:
+            elif eleccion == 2:
                 Empleado.borrarEmpleado()
 
-            elif eleccionEmpleado == 3:
-                #modificarEmpleado()
-                pass
+            elif eleccion == 3:
+                Empleado.modificarEmpleado()
 
-            elif eleccionEmpleado == 4:
+            elif eleccion == 4:
                 Empleado.mostrarEmpleados()
 
-            elif eleccionEmpleado == 5:
-                #buscarEmpleado()
-                pass
+            elif eleccion == 5:
+                Empleado.buscarEmpleado()
 
-            elif eleccionEmpleado == 6:
-                print("Volviendo al menu principal...")
+            elif eleccion == 6:
+                print("\nVolviendo al menu principal...")
                 break
-
 
     elif eleccion == 2:
         print("\nMenu Cursos \n\n1.- Agregar curso\n2.- Borrar curso\n3.- Modificar registro de un curso\n4.- Consultar todo el curso\n5.- Ver detalles de un curso\n6.- Volver al menu principal\n")

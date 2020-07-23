@@ -77,9 +77,35 @@ class Empleado:
             print("Borrado exitosamente\n")
             empleadosW.close()
 
-    @staticmethod
+    @staticmethod #Falta terminar
     def modificarEmpleado():
-        pass
+
+        while True:
+            try:
+                idEmpleado = int(input("¿Cual es el ID del empleado que quieres modificar? "))
+                break
+            except:
+                print("\n¡Error, digite solo enteros!\nIntente de nuevo...\n")
+
+        eleccionEmpleado = int(input("¿Que dato quieres modificar?\n1.-Nombre\n2.-Direccion\nIngresa una opcion: "))
+        if eleccionEmpleado == 1:
+            nombre = input("Ingresa el nuevo nombre: ")
+        if eleccionEmpleado == 2:
+            direccion = input("Ingresa la nueva direccion: ")
+        nuevaLista = []
+        with open("./archivos/empleados.txt","r", encoding="utf8") as empleadosTXT:
+            for linea in empleadosTXT:
+                nuevaLista.append(linea)
+                if linea.split("|")[0] == str(idEmpleado):
+                    if eleccionEmpleado == 1:
+                        nuevaLista[1] = nombre
+                    elif eleccionEmpleado == 2:
+                        nuevaLista[2] = direccion
+                    nuevaLista.append(linea)
+                with open("./archivos/empleados.txt","w", encoding="utf8") as empleadosW:
+                    for i in nuevaLista:
+                        empleadosW.write(str(i))
+                empleadosW.close()
 
     @staticmethod #Listo
     def mostrarEmpleados():
@@ -92,8 +118,24 @@ class Empleado:
         empleadosTXT.close()
 
     @staticmethod
-    def buscarEmpleado(self):
-        pass
+    def buscarEmpleado(): #Falta agregar si el usuario no existe imprimirlo por pantalla
+        while True:
+            try:
+                idEmpleado = int(input("Introduce el ID que quieres buscar: "))
+                break
+            except:
+                print("Introduce solo numeros enteros!")
+        with open("./archivos/empleados.txt","r",encoding="utf8") as empleadosTXT:
+            for linea in empleadosTXT:
+                datos = linea.split("|")
+                datoID = linea.split("|")[0]
+                if datoID == str(idEmpleado):
+                    print(f"{'ID':<5}{'NOMBRE':^10}{'DIRECCION':>15}")
+                    print("_"*31)
+                    print(f"{datos[0]:<5}{datos[1]:^10}{datos[2]:>15}")
+                    empleadosTXT.close()
+                    break
+
 
 
 
