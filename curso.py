@@ -43,18 +43,18 @@ class Curso:
                 for linea in lineas:
                     if str(idCurso) == linea.split("|")[0]:
                         print("\nID ya existe!\n")
-                        cursoTXT.close()
+                        cursosTXT.close()
                         break
                 else:
                     descripcion = input("Descripcion: ")
-                    idEmpleado = int(input("Ingrese Id del empleado: ")
+                    idEmpleado = int(input("Ingrese Id del empleado: "))
                     Curso(idCurso, descripcion, idEmpleado)
-                    cursoTXT = open("./archivos/curso.txt", "a", encoding = "utf8")
-                    cursoTXT.write(f"{idCurso}|{descripcion}|{idEmpleado}\n")
+                    cursosTXT = open("./archivos/curso.txt", "a", encoding = "utf8")
+                    cursosTXT.write(f"{idCurso}|{descripcion}|{idEmpleado}\n")
                     print("="*31)
                     print("\nCurso agregado exitosamente!\n")
                     print("="*31)
-                    cursoTXT.close()
+                    cursosTXT.close()
                     break
 
     @staticmethod #Falta agregar si el usuario no existe imprimirlo por pantalla
@@ -68,7 +68,7 @@ class Curso:
                 print("\n¡Error, digite solo enteros!\nIntente de nuevo...\n")
         with open("./archivos/cursos.txt","r", encoding="utf8") as cursosTXT:
             for linea in cursosTXT:
-                if linea.split("|")[0] != str(idCursos):
+                if linea.split("|")[0] != str(idCurso):
                     nuevaLista.append(linea)
             cursosTXT.close()
             with open("./archivos/cursos.txt","w", encoding="utf8") as cursosW:
@@ -78,8 +78,8 @@ class Curso:
             cursosW.close()
 
     @staticmethod
-        def modificarCurso():
-            pass
+    def modificarCurso():
+        pass
 
     @staticmethod
     def mostrarCurso():
