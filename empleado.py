@@ -77,35 +77,42 @@ class Empleado:
             print("Borrado exitosamente\n")
             empleadosW.close()
 
-    @staticmethod #Falta terminar
+    @staticmethod #test v1 (falta verificacion de ID)
     def modificarEmpleado():
-
-        while True:
-            try:
-                idEmpleado = int(input("¿Cual es el ID del empleado que quieres modificar? "))
-                break
-            except:
-                print("\n¡Error, digite solo enteros!\nIntente de nuevo...\n")
-
-        eleccionEmpleado = int(input("¿Que dato quieres modificar?\n1.-Nombre\n2.-Direccion\nIngresa una opcion: "))
-        if eleccionEmpleado == 1:
+        idEmpleado = input("Ingresa el ID a modificar")
+        eleccionMod = input("¿Que dato quieres modificar?")
+        if eleccionMod == "1":
             nombre = input("Ingresa el nuevo nombre: ")
-        if eleccionEmpleado == 2:
+        elif eleccionMod == "2":
             direccion = input("Ingresa la nueva direccion: ")
-        nuevaLista = []
-        with open("./archivos/empleados.txt","r", encoding="utf8") as empleadosTXT:
-            for linea in empleadosTXT:
-                nuevaLista.append(linea)
-                if linea.split("|")[0] == str(idEmpleado):
-                    if eleccionEmpleado == 1:
-                        nuevaLista[1] = nombre
-                    elif eleccionEmpleado == 2:
-                        nuevaLista[2] = direccion
-                    nuevaLista.append(linea)
-                with open("./archivos/empleados.txt","w", encoding="utf8") as empleadosW:
-                    for i in nuevaLista:
-                        empleadosW.write(str(i))
-                empleadosW.close()
+        else:
+            print("Ingresa una opcion valida")
+        listaCambios = []
+        listaCambios2 = []
+        empleadosTXT = open("./archivos/empleados.txt","r",encoding="utf8")
+        readlines = empleadosTXT.readlines()
+        for line in readlines:
+            line = line.replace("\n","")
+            listaCambios.append(line)
+        for linea in listaCambios:
+            datos = linea.split("|")
+            if datos[0] == idEmpleado:
+                if eleccionMod == "1":
+                    datosNuevos = datos[1].replace(datos[1], nombre + "|" + datos[2])
+                    datosCambiados = (datos[0] + "|" + datosNuevos + "\n")
+                    listaCambios2.append(datosCambiados)
+                elif eleccionMod == "2":
+                    datosNuevos = datos[1].replace(datos[1], datos[1] + "|" + direccion)
+                    datosCambiados = (datos[0] + "|" + datosNuevos + "\n")
+                    listaCambios2.append(datosCambiados)
+            else:
+                datos = (linea + "\n")
+                listaCambios2.append(datos)
+        empleadosTXT.close()
+        empleadosTXTW = open("./archivos/empleados.txt","w",encoding="utf8")
+        for i in listaCambios2:
+            empleadosTXTW.write(i)
+        empleadosTXTW.close()
 
     @staticmethod #Listo
     def mostrarEmpleados():
