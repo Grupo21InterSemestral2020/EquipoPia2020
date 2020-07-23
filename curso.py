@@ -28,3 +28,70 @@ class Curso:
     @idEmpleado.setter
     def idEmpelado(self, valor):
         self.__idEmpleado = valor
+
+    @staticmethod
+    def agregarCurso():
+        while True:
+            while True:
+                try:
+                    idCurso=int(input("Ingresar el ID: "))
+                    break
+                except:
+                    print("\n¡Error, digite solo enteros!\nIntente de nuevo...\n")
+            with open("./archivos/cursos.txt","r",encoding="utf8") as cursosTXT:
+                lineas = cursosTXT.readlines()
+                for linea in lineas:
+                    if str(idCurso) == linea.split("|")[0]:
+                        print("\nID ya existe!\n")
+                        cursoTXT.close()
+                        break
+                else:
+                    descripcion = input("Descripcion: ")
+                    idEmpleado = int(input("Ingrese Id del empleado: ")
+                    Curso(idCurso, descripcion, idEmpleado)
+                    cursoTXT = open("./archivos/curso.txt", "a", encoding = "utf8")
+                    cursoTXT.write(f"{idCurso}|{descripcion}|{idEmpleado}\n")
+                    print("="*31)
+                    print("\nCurso agregado exitosamente!\n")
+                    print("="*31)
+                    cursoTXT.close()
+                    break
+
+    @staticmethod #Falta agregar si el usuario no existe imprimirlo por pantalla
+    def borrarCurso():
+        nuevaLista = []
+        while True:
+            try:
+                idCurso = int(input("ID a borrar: "))
+                break
+            except:
+                print("\n¡Error, digite solo enteros!\nIntente de nuevo...\n")
+        with open("./archivos/cursos.txt","r", encoding="utf8") as cursosTXT:
+            for linea in cursosTXT:
+                if linea.split("|")[0] != str(idCursos):
+                    nuevaLista.append(linea)
+            cursosTXT.close()
+            with open("./archivos/cursos.txt","w", encoding="utf8") as cursosW:
+                for n in nuevaLista:
+                    cursosW.write(str(n))
+            print("Borrado exitosamente\n")
+            cursosW.close()
+
+    @staticmethod
+        def modificarCurso():
+            pass
+
+    @staticmethod
+    def mostrarCurso():
+        print(f"{'ID':<5}{'DESCRIPCION':^10}{'IdEmpleado':>15}")
+        print("_"*31)
+        with open("./archivos/cursos.txt", encoding="utf8") as cursosTXT:
+            for linea in cursosTXT:
+                datos = linea.strip().split('|')
+                print(f"{datos[0]:<5}{datos[1]:^10}{datos[2]:>15}")
+        cursosTXT.close()
+
+    @staticmethod
+    def buscarCurso(self):
+        pass
+           
