@@ -41,16 +41,23 @@ class Tema:
                         print("_"*35)
                         input("Pulsa cualquier tecla para continuar...")
                         temaTXT.close()
+                    print("\n¡Error, digite solo enteros!\nIntente de nuevo...\n")
+            with open("./archivos/temas.txt","r",encoding="utf8") as temasTXT:
+                lineas = temasTXT.readlines()
+                for linea in lineas:
+                    if str(idTema) == linea.split("|")[0]:
+                        print("\nID ya existe!\n")
+                        temasTXT.close()
                         break
                 else:
                     nombre = input("Nombre: ")
                     Tema(idTema,nombre)
-                    temaTXT = open("./archivos/tema.txt", "a", encoding = "utf8")
-                    temaTXT.write(f"{idTema}|{nombre}\n")
+                    temasTXT = open("./archivos/temas.txt", "a", encoding = "utf8")
+                    temasTXT.write(f"{idTema}|{nombre}\n")
                     print("="*31)
                     print("\nTema agregado exitosamente!\n")
                     print("="*31)
-                    temaTXT.close()
+                    temasTXT.close()
                     break
 
     @staticmethod 
@@ -82,20 +89,14 @@ class Tema:
                     input("Pulsa cualquier tecla para continuar...")
                 temaTXT.close()
 
-
-         
     @staticmethod
     def mostrarTemas():
-        print(f"{'ID':<5}{'NOMBRE':^10}")
-        print("_"*31)
-        with open("./archivos/tema.txt", encoding="utf8") as empleadosTXT:
-            for linea in temaTXT:
+        print(f"{'ID':<5}{'NOMBRE':>10}")
+        print("_"*20)
+        with open("./archivos/temas.txt", encoding="utf8") as temasTXT:
+            for linea in temasTXT:
                 datos = linea.strip().split('|')
-                print(f"{datos[0]:<5}{datos[1]:^10}{datos[2]:>15}")
-        temaTXT.close()
+                print(f"{datos[0]:<5}{datos[1]:>10}")
+        temasTXT.close()
 
-
-
-    def buscarTema(self):
-        pass
     
