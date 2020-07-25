@@ -28,12 +28,18 @@ class Tema:
                     idTema = int(input("Ingresa el ID: "))
                     break
                 except:
-                    print("\n¡Error, digite solo enteros!\nIntente de nuevo...\n")
+                    print("_"*30)
+                    print("¡Error, digite solo numeros enteros!\nIntente de nuevo..."
+                    print("_"*30)
+                    input("Pulsa cualquier tecla para continuar...")
             with open("./archivos/tema.txt","r",encoding="utf8")as temaTXT:
                 lineas = temaTXT.readlines()
                 for linea in lineas:
                     if str(idTema) == linea.split("|")[0]:
-                        print("\nID ya existe!\n")
+                        print("_"*35)
+                        print("ID ya existe!")
+                        print("_"*35)
+                        input("Pulsa cualquier tecla para continuar...")
                         temaTXT.close()
                         break
                 else:
@@ -47,6 +53,37 @@ class Tema:
                     temaTXT.close()
                     break
 
+    @staticmethod 
+    def borrarTema():
+        while True: #Ciclo principal, el ciclo se apaga cuando se borra el empleado
+        nuevaLista = []
+        while True: #Solo numeros enteros
+            try:
+                idTema = int(input("\nID a borrar: "))
+                break #Sale del ciclo si introducen un numero entero
+            except:
+                 print("_"*30)
+                    print("¡Error, digite solo números enteros!\nIntente de nuevo...")
+                    print("_"*30)
+                    input("Pulsa cualquier tecla para continuar...")
+        #Verifica si el usuario existe o no en la lista
+        with open("./archivos/tema.txt","r",encoding="utf8")as temaTXT: 
+            lineas = temaTXT.readlines()
+            for linea in lineas:
+                if str(idTema) == linea.split("|")[0]:   
+                    verificador = True #si el empleado existe en la lista verificador
+                    break
+                else:
+                    verificador = False #Si no existe en la lista se queda en False e imprime por pantalla que no existe
+                if verificador == False:
+                    print("_"*35)
+                    print("ID no existe!")
+                    print("_"*35)
+                    input("Pulsa cualquier tecla para continuar...")
+                temaTXT.close()
+
+
+         
     @staticmethod
     def mostrarTemas():
         print(f"{'ID':<5}{'NOMBRE':^10}")
@@ -61,3 +98,4 @@ class Tema:
 
     def buscarTema(self):
         pass
+    
