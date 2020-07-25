@@ -1,1 +1,6 @@
-1|Python3
+1|Java|
+2|SQLServer
+4|Flutter|
+5|Go
+3|Ingles
+6|Ruby
