@@ -47,8 +47,7 @@ while True:
                 Curso.borrarCurso()
 
             elif eleccion == 3:
-                #Curso.modificarCurso()
-                pass
+                Curso.modificarCurso()
 
             elif eleccion == 4:
                 Curso.mostrarCurso()
@@ -70,20 +69,16 @@ while True:
                 Tema.agregarTema()
 
             elif eleccion == 2:
-                #Tema.borrarTema()
-                pass
+                Tema.borrarTema()
 
             elif eleccion == 3:
-                #modificarTema()
-                pass
+                Tema.modificarTema()
 
             elif eleccion == 4:
                 Tema.mostrarTemas()
-                
 
             elif eleccion == 5:
-                #BuscarTema()
-                pass
+                Tema.buscarTema()
 
             elif eleccion == 6:
                 print("Volviendo al menu principal...")
