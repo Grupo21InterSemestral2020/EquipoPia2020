@@ -1,6 +1,7 @@
 from empleado import Empleado
 from tema import Tema
 from curso import Curso
+
 while True:
 
     print("\nMenu Principal\n\n1.- Empleados\n2.- Cursos\n3.- Temas\n4.- Videos\n5.- Temas asignados al curso\n6.- Videos asignados a un tema\n7.- Salir\n")
@@ -10,26 +11,29 @@ while True:
     if eleccion == 1: #Se despliega el submenú de Empleados
         while True:
             print("\nMenu Empleados\n\n1.- Agregar empleado\n2.- Borrar empleado\n3.- Modificar registro de empleado\n4.- Consultar todo \n5.- Ver datalles de empleado\n6.- Volver al menu principal\n")
-            eleccion = int(input("Elige una opcion: "))
+            eleccion = input("Elige una opcion: ")
 
-            if eleccion == 1:
+            if eleccion == "1":
                 Empleado.agregarEmpleado()
 
-            elif eleccion == 2:
+            elif eleccion == "2":
                 Empleado.borrarEmpleado()
 
-            elif eleccion == 3:
+            elif eleccion == "3":
                 Empleado.modificarEmpleado()
 
-            elif eleccion == 4:
+            elif eleccion == "4":
                 Empleado.mostrarEmpleados()
 
-            elif eleccion == 5:
+            elif eleccion == "5":
                 Empleado.buscarEmpleado()
 
-            elif eleccion == 6:
+            elif eleccion == "6":
                 print("\nVolviendo al menu principal...")
                 break
+
+            else:
+                print("Error, Opcion invalida!!!")
 
     elif eleccion == 2:#Se despliega el submenú de Cursos
         while True:
