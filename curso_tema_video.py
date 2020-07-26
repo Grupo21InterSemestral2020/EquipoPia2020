@@ -110,7 +110,7 @@ class CursoTV:
                     break #Break del ciclo inicial
 
     @staticmethod
-    def modificarEmpleado():
+    def modificarCursoTV():
         while True:
             try:
                 idCursoTV = int(input("\nIngresa el ID a modificar: "))
@@ -192,7 +192,6 @@ class CursoTV:
                 print(f"{datos[0]:<5}{'|':^}{datos[1]:^10}{'|':^}{datos[2]:^15}{'|':^}")
         ctvTXT.close()
         
-
     @staticmethod
     def buscarCursoTV(): #Falta agregar si el usuario no existe imprimirlo por pantalla
         while True:
