@@ -70,6 +70,8 @@ class Curso:
             for linea in cursosTXT:
                 if linea.split("|")[0] != str(idCurso):
                     nuevaLista.append(linea)
+                elif idCurso not in cursosTXT:
+                    print("El curso no existe")
             cursosTXT.close()
             with open("./archivos/cursos.txt","w", encoding="utf8") as cursosW:
                 for n in nuevaLista:
