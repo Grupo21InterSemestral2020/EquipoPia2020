@@ -40,7 +40,7 @@ class Curso_Tema:
                     print("¡Error, digite solo números enteros!\nIntente de nuevo...")
                     print("_"*30)
                     input("Pulsa cualquier tecla para continuar...")
-            with open("./archivos/Curso_Tema.txt","r",encoding="utf8") as empleadosTXT:
+            with open("./archivos/Curso_Tema.txt","r",encoding="utf8") as Curso_TemaTXT:
                 lineas = Curso_TemaTXT.readlines()
                 for linea in lineas:
                     if str(idCursoTema) == linea.split("|")[0]:
