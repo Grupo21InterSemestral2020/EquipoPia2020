@@ -62,14 +62,16 @@ class Video:
                         break
                 else:
                     idVideo = input("ID del video: ")
-                    nombre = input("Nombre: ")
-                    Video(idVideo, nombre, url)
+                    nombre = input("Nombre del video: ")
+                    url = input("URL: ")
+                    fechaPublicacion = input("Fecha de Publicación: ")
+                    Video(idVideo, nombre, url, fechaPublicacion)
                     videosTXT = open("./archivos/videos.txt", "a", encoding = "utf8")
-                    videosTXT.write(f"{idvideo}|{nombre}|{url}\n")
+                    videosTXT.write(f"{idVideo}|{nombre}|{url}|{fechaPublicacion}\n")
                     print("="*31)
                     print("\nVideo agregado exitosamente!\n")
                     print("="*31)
-                    videoTXT.close()
+                    videosTXT.close()
                     break
 
     @staticmethod
@@ -87,7 +89,7 @@ class Video:
                     input("Pulsa cualquier tecla para continuar...")
 
             #Verifica si el video existe o no en la lista
-            with open("./archivos/video.txt","r",encoding="utf8") as videosTXT:
+            with open("./archivos/videos.txt","r",encoding="utf8") as videosTXT:
                 lineas = videosTXT.readlines()
                 for linea in lineas:
                     if str(idVideo) == linea.split("|")[0]:
@@ -123,7 +125,7 @@ class Video:
     def modificarVideo():
         while True:
             try:
-                idvideo = int(input("\nIngresa el ID a modificar: "))
+                idVideo = int(input("\nIngresa el ID a modificar: "))
                 break
             except:
                 print("_"*30)
@@ -146,7 +148,7 @@ class Video:
                 input("Pulsa cualquier tecla para continuar...")
                 videosTXT.close()
             elif verificador == True:
-                eleccionMod = input("\n¿Que dato quieres modificar?\n1.- Nombre\n2.- url\nIngresa una opcion: ")
+                eleccionMod = input("\n¿Que dato quieres modificar?\n1.- Nombre\n2.- URL\n3.-Fecha de publicacion\nIngresa una opcion: ")
                 if eleccionMod == "1":
                     nombre = input("Ingresa el nuevo nombre: ")
                     print("_"*35)
@@ -154,11 +156,17 @@ class Video:
                     print("_"*35)
                     input("Pulsa cualquier tecla para continuar...")
                 elif eleccionMod == "2":
-                    direccion = input("Ingresa el nuevo url: ")
+                    url = input("Ingresa el nuevo url: ")
                     print("_"*35)
                     print("\nModificacion existosa!\n")
                     print("_"*35)
                     input("Pulsa cualquier tecla para continuar...")
+                elif eleccionMod == "3":
+                    fechaPublicacion = input("Ingresa la fecha de publicación: ")
+                    print("_"*35)
+                    print("\nModificacion existosa!\n")
+                    print("_"*35)
+                    input("Pulsa cualquier tecla para continuar...")                    
                 else:
                     print("_"*30)
                     print("Opcion invalida.\nIntente de nuevo...")
@@ -175,11 +183,15 @@ class Video:
                     datos = linea.split("|")
                     if datos[0] == str(idVideo):
                         if eleccionMod == "1":
-                            datosNuevos = datos[1].replace(datos[1], nombre + "|" + datos[2])
+                            datosNuevos = datos[1].replace(datos[1], nombre + "|" + datos[2] + "|" + datos[3])
                             datosCambiados = (datos[0] + "|" + datosNuevos + "\n")
                             listaCambios2.append(datosCambiados)
                         elif eleccionMod == "2":
-                            datosNuevos = datos[1].replace(datos[1], datos[1] + "|" + direccion)
+                            datosNuevos = datos[1].replace(datos[1], datos[1] + "|" + url + "|" + datos[3])
+                            datosCambiados = (datos[0] + "|" + datosNuevos + "\n")
+                            listaCambios2.append(datosCambiados)
+                        elif eleccionMod == "3":
+                            datosNuevos = datos[1].replace(datos[1], datos[1] + "|" + datos[2] + "|" + fechaPublicacion)
                             datosCambiados = (datos[0] + "|" + datosNuevos + "\n")
                             listaCambios2.append(datosCambiados)
                     else:
@@ -193,15 +205,14 @@ class Video:
 
     @staticmethod #Listo
     def mostrarVideos():
-        print("_"*33)
-        print(f"{'ID':^5}{'|':^}{'NOMBRE':^10}{'|':^}{'URL':^15}")
-        print("_"*33)
+        print("_"*60)
+        print(f"{'ID':^5}{'|':^}{'NOMBRE':^10}{'|':^}{'URL':^15}{'Fecha de publicacion':^15}")
+        print("_"*60)
         with open("./archivos/videos.txt", encoding="utf8") as videosTXT:
             for linea in videosTXT:
                 datos = linea.strip().split('|')
-                print(f"{datos[0]:<5}{'|':^}{datos[1]:^10}{'|':^}{datos[2]:^15}{'|':^}")
+                print(f"{datos[0]:<5}{'|':^}{datos[1]:^10}{'|':^}{datos[2]:^15}{'|':^}{datos[3]:^15}")
         videosTXT.close()
-        
 
     @staticmethod
     def buscarVideo(): #Falta agregar si el video no existe imprimirlo por pantalla
@@ -217,7 +228,7 @@ class Video:
         with open("./archivos/videos.txt","r",encoding="utf8") as videosTXT:
             lineas = videosTXT.readlines()
             for linea in lineas:
-                if str(idvideo) == linea.split("|")[0]:
+                if str(idVideo) == linea.split("|")[0]:
                     verificador = True #Si el idVideo existe en la lista verificador se queda en True y procede a borrar
                     break
                 else:
@@ -233,9 +244,8 @@ class Video:
                 datos = linea.split("|")
                 datoID = linea.split("|")[0]
                 if datoID == str(idVideo):
-                    print(f"{'ID':<5}{'NOMBRE':^10}{'URL':>15}")
-                    print("_"*31)
-                    print(f"{datos[0]:<5}{datos[1]:^10}{datos[2]:>15}")
+                    print(f"{'ID':^5}{'|':^}{'NOMBRE':^10}{'|':^}{'URL':^15}{'Fecha de publicacion':^15}")
+                    print("_"*60)
+                    print(f"{datos[0]:<5}{datos[1]:^10}{datos[2]:>15}{datos[3]:>15}")
                     videosTXT.close()
                     break
-                    
