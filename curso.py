@@ -29,7 +29,7 @@ class Curso:
     def idEmpelado(self, valor):
         self.__idEmpleado = valor
 
-    @staticmethod
+    @staticmethod #Listo
     def agregarCurso():
         while True:
             while True:
@@ -57,27 +57,49 @@ class Curso:
                     cursosTXT.close()
                     break
 
-    @staticmethod #Falta agregar si el usuario no existe imprimirlo por pantalla
+    @staticmethod #Listo
     def borrarCurso():
-        nuevaLista = []
         while True:
-            try:
-                idCurso = int(input("ID a borrar: "))
-                break
-            except:
-                print("\n¡Error, digite solo enteros!\nIntente de nuevo...\n")
-        with open("./archivos/cursos.txt","r", encoding="utf8") as cursosTXT:
-            for linea in cursosTXT:
-                if linea.split("|")[0] != str(idCurso):
-                    nuevaLista.append(linea)
-                elif idCurso not in cursosTXT:
-                    print("El curso no existe")
-            cursosTXT.close()
-            with open("./archivos/cursos.txt","w", encoding="utf8") as cursosW:
-                for n in nuevaLista:
-                    cursosW.write(str(n))
-            print("Borrado exitosamente\n")
-            cursosW.close()
+            nuevaLista = []
+            while True:
+                try:
+                    idCurso = int(input("ID a borrar: "))
+                    break
+                except:
+                        print("_"*30)
+                        print("¡Error, digite solo números enteros!\nIntente de nuevo...")
+                        print("_"*30)
+                        input("Pulsa cualquier tecla para continuar...")               
+            with open("./archivos/cursos.txt","r", encoding="utf8") as cursosTXT:
+                lineas = cursosTXT.readlines()
+                for linea in lineas:
+                    if str(idCurso) == linea.split("|")[0]:
+                        verificador=True
+                        break
+                    else:
+                        verificador=False
+                if verificador == False:
+                    print("_"*35)
+                    print("ID no existe!")
+                    print("_"*35)
+                    input("Pulsa cualquier tecla para continuar...")
+                cursosTXT.close() 
+
+                if verificador ==True:
+                    with open("./archivos/cursos.txt","w", encoding="utf8") as cursosTXT:
+                        for linea in cursosTXT:
+                            if linea.split("|")[0] != str(idCurso):
+                                nuevaLista.append(linea)
+                        cursosTXT.close()
+                        with open("./archivos/cursos.txt","w", encoding="utf8") as cursosW:
+                            for n in nuevaLista:
+                                cursosW.write(str(n))
+                        print("_"*30)
+                        print("Curso Borrado existosamente!")
+                        print("_"*30)
+                        input("Pulsa cualquier tecla para continuar...")
+                        cursosW.close()
+                        break 
 
     @staticmethod
     def modificarCurso():
