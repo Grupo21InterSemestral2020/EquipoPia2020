@@ -1,6 +1,7 @@
 from empleado import Empleado
 from tema import Tema
 from curso import Curso
+from curso_tema_video import CursoTV
 
 while True:
 
@@ -118,10 +119,31 @@ while True:
         #Agregar submenu de temas asignados al curso
 
     elif eleccion == 6:#Se despliega el submenú de temas videos asignados a un tema
-        print("\nMenu Videos Asignados a un Tema\n\n1.agregar video asignado a un tema\n2.borrar un video asignado a algun tema\n3.modificar un video asignado a un tema\n4.consultar todo el video asignado a un tema\n5.ver detalles de algun video asignado a un tema\n6.volver al menu principal\n")
-        eleccion = input("Elige una opcion: ")
+        while True:
+            print("\nMenu Videos Asignados a un Tema\n\n1.- Agregar video asignado a un tema\n2. Borrar un video asignado a algun tema\n3.- Modificar un video asignado a un tema\n4.- Consultar todo\n5.- Ver detalle de algun video asignado a un tema\n6.- Volver al menu principal\n")
+            eleccion = input("Elige una opcion: ")
 
-        #Ingresar subMenu de videos asignados a un tema
+            if eleccion == "1":
+                CursoTV.agregarCursoTV()
+
+            elif eleccion == "2":
+                CursoTV.borrarCursoTV()
+
+            elif eleccion == "3":
+                CursoTV.modificarCursoTV()
+
+            elif eleccion == "4":
+                CursoTV.mostrarCursoTV()
+
+            elif eleccion == "5":
+                CursoTV.buscarCursoTV()
+
+            elif eleccion == "6":
+                print("\nVolviendo al menu principal...")
+                break
+
+            else:
+                print("Error, Opcion invalida!!!")
 
     elif eleccion == 7:
         print("\nSaliendo...")
