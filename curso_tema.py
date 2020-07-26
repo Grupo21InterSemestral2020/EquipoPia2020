@@ -28,7 +28,7 @@ class Curso_Tema:
     def idTema(self,valor):
         self.__idTema=valor
 
-        @staticmethod #Listo
+    @staticmethod
     def agregarCurso_Tema():
         while True:
             while True:
@@ -40,7 +40,7 @@ class Curso_Tema:
                     print("¡Error, digite solo números enteros!\nIntente de nuevo...")
                     print("_"*30)
                     input("Pulsa cualquier tecla para continuar...")
-            with open("./archivos/Curso_Tema.txt","r",encoding="utf8") as Curso_TemaTXT:
+            with open("./archivos/curso_tema.txt","r",encoding="utf8") as Curso_TemaTXT:
                 lineas = Curso_TemaTXT.readlines()
                 for linea in lineas:
                     if str(idCursoTema) == linea.split("|")[0]:
@@ -51,11 +51,11 @@ class Curso_Tema:
                         Curso_TemaTXT.close()
                         break
                 else:
-                    nombre = input("Nombre: ")
-                    direccion = input("Dirección: ")
-                    Curso_Tema(idCursoTema, nombre, direccion)
-                    Curso_TemaTXT = open("./archivos/Curso_Tema.txt", "a", encoding = "utf8")
-                    Curso_TemaTXT.write(f"{idCursoTema}|{nombre}|{direccion}\n")
+                    idCurso = input("ID del Curso: ")
+                    idTema = input("ID del Video: ")
+                    Curso_Tema(idCursoTema, idCurso, idTema)
+                    Curso_TemaTXT = open("./archivos/curso_tema.txt", "a", encoding = "utf8")
+                    Curso_TemaTXT.write(f"{idCursoTema}|{idCurso}|{idTema}\n")
                     print("="*31)
                     print("\nCurso_Tema agregado exitosamente!\n")
                     print("="*31)
@@ -77,7 +77,7 @@ class Curso_Tema:
                     input("Pulsa cualquier tecla para continuar...")
 
             #Verifica si el usuario existe o no en la lista
-            with open("./archivos/Curso_Tema.txt","r",encoding="utf8") as Curso_TemaTXT:
+            with open("./archivos/curso_tema.txt","r",encoding="utf8") as Curso_TemaTXT:
                 lineas = Curso_TemaTXT.readlines()
                 for linea in lineas:
                     if str(idCursoTema) == linea.split("|")[0]:
@@ -94,12 +94,12 @@ class Curso_Tema:
 
             #Si el ID si existe entonces hará esto y borrara
             if verificador == True:
-                with open("./archivos/Curso_Tema.txt","r", encoding="utf8") as Curso_TemaTXT:
+                with open("./archivos/curso_tema.txt","r", encoding="utf8") as Curso_TemaTXT:
                     for linea in Curso_TemaTXT:
                         if linea.split("|")[0] != str(idCursoTema):
                             nuevaLista.append(linea)
                     Curso_TemaTXT.close()
-                    with open("./archivos/Curso_Tema.txt","w", encoding="utf8") as Curso_TemaTXT:
+                    with open("./archivos/curso_tema.txt","w", encoding="utf8") as Curso_TemaTXT:
                         for n in nuevaLista:
                             Curso_TemaTXT.write(str(n))
                     print("_"*30)
@@ -121,8 +121,8 @@ class Curso_Tema:
                 print("_"*30)
                 input("Pulsa cualquier tecla para continuar...")
         #Verifica si el usuario existe o no en la lista
-        with open("./archivos/Curso_Tema.txt","r",encoding="utf8") as CursoTemaTXT:
-            lineas = Curso_TemasTXT.readlines()
+        with open("./archivos/curso_tema.txt","r",encoding="utf8") as Curso_TemaTXT:
+            lineas = Curso_TemaTXT.readlines()
             for linea in lineas:
                 if str(idCursoTema) == linea.split("|")[0]:
                     verificador = True #Si el idCursoTema existe en la lista verificador se queda en Trua y procede a borrar
@@ -136,15 +136,15 @@ class Curso_Tema:
                 input("Pulsa cualquier tecla para continuar...")
                 Curso_TemaTXT.close()
             elif verificador == True:
-                eleccionMod = input("\n¿Que dato quieres modificar?\n1.- Nombre\n2.- Dirección\nIngresa una opcion: ")
+                eleccionMod = input("\n¿Que dato quieres modificar?\n1.- ID Curso\n2.- ID Video\nIngresa una opcion: ")
                 if eleccionMod == "1":
-                    nombre = input("Ingresa el nuevo nombre: ")
+                    idCurso = input("Ingresa el nuevo ID del Curso: ")
                     print("_"*35)
                     print("\nModificacion existosa!\n")
                     print("_"*35)
                     input("Pulsa cualquier tecla para continuar...")
                 elif eleccionMod == "2":
-                    direccion = input("Ingresa la nueva dirección: ")
+                    idVideo = input("Ingresa el nuevo ID del Video: ")
                     print("_"*35)
                     print("\nModificacion existosa!\n")
                     print("_"*35)
@@ -156,7 +156,7 @@ class Curso_Tema:
                     input("Pulsa cualquier tecla para continuar...")
                 listaCambios = [] #En esta lista se guarda la lista actual sin cambios
                 listaCambios2 = [] #En esta lista se guarda todos los datos incluidos los cambios
-                Curso_TemaTXT = open("./archivos/Curso_Tema.txt","r",encoding="utf8")
+                Curso_TemaTXT = open("./archivos/curso_tema.txt","r",encoding="utf8")
                 readlines = Curso_TemaTXT.readlines()
                 for line in readlines:
                     line = line.replace("\n","")
@@ -165,36 +165,35 @@ class Curso_Tema:
                     datos = linea.split("|")
                     if datos[0] == str(idCursoTema):
                         if eleccionMod == "1":
-                            datosNuevos = datos[1].replace(datos[1], nombre + "|" + datos[2])
+                            datosNuevos = datos[1].replace(datos[1], idCurso + "|" + datos[2])
                             datosCambiados = (datos[0] + "|" + datosNuevos + "\n")
                             listaCambios2.append(datosCambiados)
                         elif eleccionMod == "2":
-                            datosNuevos = datos[1].replace(datos[1], datos[1] + "|" + direccion)
+                            datosNuevos = datos[1].replace(datos[1], datos[1] + "|" + idVideo)
                             datosCambiados = (datos[0] + "|" + datosNuevos + "\n")
                             listaCambios2.append(datosCambiados)
                     else:
                         datos = (linea + "\n")
                         listaCambios2.append(datos)
                 Curso_TemaTXT.close()
-                Curso_TemaTXTW = open("./archivos/Curso_Tema.txt","w",encoding="utf8")
+                Curso_TemaTXTW = open("./archivos/curso_tema.txt","w",encoding="utf8")
                 for i in listaCambios2:
                     Curso_TemaTXTW.write(i)
                 Curso_TemaTXTW.close()
 
-    @staticmethod #Listo
+    @staticmethod
     def mostrarCurso_Tema():
         print("_"*33)
-        print(f"{'ID':^5}{'|':^}{'NOMBRE':^10}{'|':^}{'DIRECCIÓN':^15}")
+        print(f"{'ID':^5}{'|':^}{'ID Curso':^10}{'|':^}{'ID Video':^15}")
         print("_"*33)
-        with open("./archivos/Curso_Tema.txt", encoding="utf8") as Curso_TemaTXT:
+        with open("./archivos/curso_tema.txt", encoding="utf8") as Curso_TemaTXT:
             for linea in Curso_TemaTXT:
                 datos = linea.strip().split('|')
                 print(f"{datos[0]:<5}{'|':^}{datos[1]:^10}{'|':^}{datos[2]:^15}{'|':^}")
         Curso_TemaTXT.close()
-        
 
     @staticmethod
-    def buscarCurso_Tema(): #Falta agregar si el usuario no existe imprimirlo por pantalla
+    def buscarCurso_Tema():
         while True:
             try:
                 idCursoTema = int(input("\nIntroduce el ID que quieres buscar: "))
@@ -204,7 +203,7 @@ class Curso_Tema:
                 print("¡Error, digite solo números enteros!\nIntente de nuevo...")
                 print("_"*30)
                 input("Pulsa cualquier tecla para continuar...")
-        with open("./archivos/Curso_Tema.txt","r",encoding="utf8") as Curso_TemaTXT:
+        with open("./archivos/curso_tema.txt","r",encoding="utf8") as Curso_TemaTXT:
             lineas = Curso_TemaTXT.readlines()
             for linea in lineas:
                 if str(idCursoTema) == linea.split("|")[0]:
@@ -218,12 +217,12 @@ class Curso_Tema:
                 print("_"*35)
                 input("Pulsa cualquier tecla para continuar...")
             Curso_TemaTXT.close()
-        with open("./archivos/Curso_Tema.txt","r",encoding="utf8") as Curso_TemaTXT:
+        with open("./archivos/curso_tema.txt","r",encoding="utf8") as Curso_TemaTXT:
             for linea in Curso_TemaTXT:
                 datos = linea.split("|")
                 datoID = linea.split("|")[0]
                 if datoID == str(idCursoTema):
-                    print(f"{'ID':<5}{'NOMBRE':^10}{'DIRECCION':>15}")
+                    print(f"{'ID':<5}{'ID Curso':^10}{'ID Video':>15}")
                     print("_"*31)
                     print(f"{datos[0]:<5}{datos[1]:^10}{datos[2]:>15}")
                     Curso_TemaTXT.close()
