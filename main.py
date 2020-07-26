@@ -1,5 +1,8 @@
 from empleado import Empleado
 from tema import Tema
+from curso import Curso
+from curso_tema_video import CursoTV
+from video import Video
 
 while True:
 
@@ -10,115 +13,143 @@ while True:
     if eleccion == 1: #Se despliega el submenú de Empleados
         while True:
             print("\nMenu Empleados\n\n1.- Agregar empleado\n2.- Borrar empleado\n3.- Modificar registro de empleado\n4.- Consultar todo \n5.- Ver datalles de empleado\n6.- Volver al menu principal\n")
-            eleccion = int(input("Elige una opcion: "))
+            eleccion = input("Elige una opcion: ")
 
-            if eleccion == 1:
+            if eleccion == "1":
                 Empleado.agregarEmpleado()
 
-            elif eleccion == 2:
+            elif eleccion == "2":
                 Empleado.borrarEmpleado()
 
-            elif eleccion == 3:
+            elif eleccion == "3":
                 Empleado.modificarEmpleado()
 
-            elif eleccion == 4:
+            elif eleccion == "4":
                 Empleado.mostrarEmpleados()
 
-            elif eleccion == 5:
+            elif eleccion == "5":
                 Empleado.buscarEmpleado()
 
-            elif eleccion == 6:
+            elif eleccion == "6":
                 print("\nVolviendo al menu principal...")
                 break
 
-    elif eleccion == 2:
-        print("\nMenu Cursos \n\n1.- Agregar curso\n2.- Borrar curso\n3.- Modificar registro de un curso\n4.- Consultar todo el curso\n5.- Ver detalles de un curso\n6.- Volver al menu principal\n")
-        eleccion = input("Elige una opcion: ")
+            else:
+                print("Error, Opcion invalida!!!")
 
-        if eleccionCurso == 1:
-            Curso.agregarCurso()
+    elif eleccion == 2:#Se despliega el submenú de Cursos
+        while True:
+            print("\nMenu Cursos \n\n1.- Agregar curso\n2.- Borrar curso\n3.- Modificar registro de un curso\n4.- Consultar todo el curso\n5.- Ver detalles de un curso\n6.- Volver al menu principal\n")
+            eleccion = int(input("Elige una opcion: "))
 
-        elif eleccionCurso == 2:
-            Curso.borrarCurso()
+            if eleccion == 1:
+                Curso.agregarCurso()
 
-        elif eleccionCurso == 3:
-            #modificarCurso()
-            pass
+            elif eleccion == 2:
+                Curso.borrarCurso()
 
-        elif eleccionCurso == 4:
-            Curso.mostrarCurso()
+            elif eleccion == 3:
+                Curso.modificarCurso()
 
-        elif eleccionCurso == 5:
-            #BuscarCurso()
-            pass
+            elif eleccion == 4:
+                Curso.mostrarCurso()
 
-        elif eleccionCurso == 6:
-            print("Volviendo al menu principal...")
+            elif eleccion == 5:
+                #BuscarCurso()
+                pass
 
-    elif eleccion == 3:
-        print("\nMenu Temas \n\n1.- Agregar tema\n2.- Borrar tema\n3.- Modificar tema\n4.- Consultar todo\n5.- Ver detalles de algun tema\n6.- Volver al menu principal\n")
-        eleccionTema = int(input("Elige una opcion: "))
+            elif eleccion == 6:
+                print("Volviendo al menu principal...")
+                break
 
-        if eleccionTema == 1:
-            Tema.agregarTema()
+    elif eleccion == 3:#Se despliega el submenú de Temas
+        while True:
+            print("\nMenu Temas \n\n1.- Agregar tema\n2.- Borrar tema\n3.- Modificar tema\n4.- Consultar todo\n5.- Ver detalles de algun tema\n6.- Volver al menu principal\n")
+            eleccion = int(input("Elige una opcion: "))
 
-        elif eleccionTema == 2:
-            Tema.borrarTema()
+            if eleccion == 1:
+                Tema.agregarTema()
 
-        elif eleccionTema == 3:
-            #modificarTema()
-            pass
+            elif eleccion == 2:
+                Tema.borrarTema()
 
-        elif eleccionTema == 4:
-            Tema.mostrarTema()
+            elif eleccion == 3:
+                Tema.modificarTema()
 
-        elif eleccionTema == 5:
-            #BuscarTema()
-            pass
+            elif eleccion == 4:
+                Tema.mostrarTemas()
 
-        elif eleccionTema == 6:
-            print("Volviendo al menu principal...")
+            elif eleccion == 5:
+                Tema.buscarTema()
 
-    elif eleccion == 4:
-        print("\nMenu Videos\n\n1.agregar video\n2.borra video\n3.modificar video\n4.consultar todo el video\n5.ver datelles de algun video\n6.volver al menu pricipal\n")
-        eleccion = input("Elige una opcion: ")
+            elif eleccion == 6:
+                print("Volviendo al menu principal...")
+                break
 
-        if eleccionVideo == 1:
-            Video.agregarVideo()
+    elif eleccion == 4:#Se despliega el submenú de Videos
+        while True:
+            print("\nMenu Videos\n\n1.- Agregar video\n2.- Borrar video\n3.- Modificar video\n4.- Consultar todo el video\n5.- Ver detalles de algun video\n6.- Volver al menu principal\n")
+            eleccion = int(input("Elige una opcion: "))
 
-        elif eleccionVideo == 2:
-            Video.borrarVideo()
+            if eleccion == 1:
+                Video.agregarVideo()
 
-        elif eleccionVideo == 3:
-            #modificarVideo()
-            pass
+            elif eleccion == 2:
+                Video.borrarVideo()
 
-        elif eleccionVideo == 4:
-            Video.mostrarVideo()
+            elif eleccion == 3:
+                Video.modificarVideo()
 
-        elif eleccionVideo == 5:
-            #BuscarVideo()
-            pass
+            elif eleccion == 4:
+                Video.mostrarVideos()
 
-        elif eleccionVideo == 6:
-            print("Volviendo al menu principal...")
+            elif eleccion == 5:
+                Video.buscarVideo()
 
-    elif eleccion == 5:
+            elif eleccion == 6:
+                print("Volviendo al menu principal...")
+                break
+
+            else:
+                print("Error, Opcion invalida!!!")
+
+    elif eleccion == 5:#Se despliega el submenú de Temas asignados a un curso
         print("\nMenu Temas Asignados al Curso\n\n1.agregar tema asignado al curso\n2.borrar tema asignado al curso\n3.modificar tema asignado al curso\n4.consultar todo el tema asignado al curso\n5.ver detalles de algun tema asignado al curso\n6.volver al menu principal\n")
         eleccion = input("Elige una opcion: ")
 
         #Agregar submenu de temas asignados al curso
 
-    elif eleccion == 6:
-        print("\nMenu Videos Asignados a un Tema\n\n1.agregar video asignado a un tema\n2.borrar un video asignado a algun tema\n3.modificar un video asignado a un tema\n4.consultar todo el video asignado a un tema\n5.ver detalles de algun video asignado a un tema\n6.volver al menu principal\n")
-        eleccion = input("Elige una opcion: ")
+    elif eleccion == 6:#Se despliega el submenú de temas videos asignados a un tema
+        while True:
+            print("\nMenu Videos Asignados a un Tema\n\n1.- Agregar video asignado a un tema\n2. Borrar un video asignado a algun tema\n3.- Modificar un video asignado a un tema\n4.- Consultar todo\n5.- Ver detalle de algun video asignado a un tema\n6.- Volver al menu principal\n")
+            eleccion = input("Elige una opcion: ")
 
-        #Ingresar subMenu de videos asignados a un tema
-        
+            if eleccion == "1":
+                CursoTV.agregarCursoTV()
+
+            elif eleccion == "2":
+                CursoTV.borrarCursoTV()
+
+            elif eleccion == "3":
+                CursoTV.modificarCursoTV()
+
+            elif eleccion == "4":
+                CursoTV.mostrarCursoTV()
+
+            elif eleccion == "5":
+                CursoTV.buscarCursoTV()
+
+            elif eleccion == "6":
+                print("\nVolviendo al menu principal...")
+                break
+
+            else:
+                print("Error, Opcion invalida!!!")
+
     elif eleccion == 7:
         print("\nSaliendo...")
         break        
-        
+
     else:
         print("\nError, opcion invalida!")
     #except:
