@@ -2,6 +2,7 @@ from empleado import Empleado
 from tema import Tema
 from curso import Curso
 from curso_tema_video import CursoTV
+from video import Video
 
 while True:
 
@@ -86,31 +87,31 @@ while True:
                 break
 
     elif eleccion == 4:#Se despliega el submenú de Videos
-        print("\nMenu Videos\n\n1.agregar video\n2.borra video\n3.modificar video\n4.consultar todo el video\n5.ver datelles de algun video\n6.volver al menu pricipal\n")
-        eleccion = input("Elige una opcion: ")
+        while True:
+            print("\nMenu Videos\n\n1.- Agregar video\n2.- Borrar video\n3.- Modificar video\n4.- Consultar todo el video\n5.- Ver detalles de algun video\n6.- Volver al menu principal\n")
+            eleccion = int(input("Elige una opcion: "))
 
-        if eleccion == 1:
-            #Video.agregarVideo()
-            pass
+            if eleccion == 1:
+                Video.agregarVideo()
 
-        elif eleccion == 2:
-            #Video.borrarVideo()
-            pass
+            elif eleccion == 2:
+                Video.borrarVideo()
 
-        elif eleccion == 3:
-            #modificarVideo()
-            pass
+            elif eleccion == 3:
+                Video.modificarVideo()
 
-        elif eleccion == 4:
-            #Video.mostrarVideo()
-            pass
+            elif eleccion == 4:
+                Video.mostrarVideos()
 
-        elif eleccion == 5:
-            #BuscarVideo()
-            pass
+            elif eleccion == 5:
+                Video.buscarVideo()
 
-        elif eleccion == 6:
-            print("Volviendo al menu principal...")
+            elif eleccion == 6:
+                print("Volviendo al menu principal...")
+                break
+
+            else:
+                print("Error, Opcion invalida!!!")
 
     elif eleccion == 5:#Se despliega el submenú de Temas asignados a un curso
         print("\nMenu Temas Asignados al Curso\n\n1.agregar tema asignado al curso\n2.borrar tema asignado al curso\n3.modificar tema asignado al curso\n4.consultar todo el tema asignado al curso\n5.ver detalles de algun tema asignado al curso\n6.volver al menu principal\n")
