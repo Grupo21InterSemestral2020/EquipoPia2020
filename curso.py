@@ -127,7 +127,7 @@ class Curso:
                 input("Pulsa cualquier tecla para continuar...")
                 cursosTXT.close()
             elif verificador == True:
-                eleccionMod = input("\n¿Que dato quieres modificar?\n1.- Nombre\n2.- Dirección\nIngresa una opcion: ")
+                eleccionMod = input("\n¿Que dato quieres modificar?\n1.- Descripcion\n2.- idEmpleado\nIngresa una opcion: ")
                 if eleccionMod == "1":
                     descripcion = input("Ingresa la nueva descripcion del curso: ")
                     print("_"*35)
@@ -185,5 +185,37 @@ class Curso:
 
     @staticmethod
     def buscarCurso(self):
-        pass
+        while True:
+            try:
+                idCurso = int(input("\nIntroduce el ID del curso que quieres buscar: "))
+                break
+            except:
+                print("_"*30)
+                print("¡Error, digite solo números enteros!\nIntente de nuevo...")
+                print("_"*30)
+                input("Pulsa cualquier tecla para continuar...")
+        with open("./archivos/cursos.txt","r",encoding="utf8") as cursosTXT:
+            lineas = cursosTXT.readlines()
+            for linea in lineas:
+                if str(idCurso) == linea.split("|")[0]:
+                    verificador = True 
+                    break
+                else:
+                    verificador = False
+            if verificador == False:
+                print("_"*35)
+                print("ID no existe!")
+                print("_"*35)
+                input("Pulsa cualquier tecla para continuar...")
+            cursosTXT.close()
+        with open("./archivos/clases.txt","r",encoding="utf8") as clasesTXT:
+            for linea in clasesTXT:
+                datos = linea.split("|")
+                datoID = linea.split("|")[0]
+                if datoID == str(idCurso):
+                    print(f"{'ID':<5}{'DESCRIPCION':^10}{'IdEmpleado':>15}")
+                    print("_"*31)
+                    print(f"{datos[0]:<5}{datos[1]:^10}{datos[2]:>15}")
+                    cursosTXT.close()
+                    break
            
