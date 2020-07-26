@@ -1,1 +1,5 @@
 
+1|Curso de programacion|1001
+2|Curso de matematicas para programacion|1002
+3|Curso de base de datos|1003
+4|Curso de Economia|1001
