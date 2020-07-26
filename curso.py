@@ -101,11 +101,79 @@ class Curso:
                         cursosW.close()
                         break 
 
-    @staticmethod
+    @staticmethod #Listo
     def modificarCurso():
-        pass
+        while True:
+            try:
+                idCurso = int(input("\nIngresa el ID a modificar: "))
+                break
+            except:
+                print("_"*30)
+                print("¡Error, digite solo números enteros!\nIntente de nuevo...")
+                print("_"*30)
+                input("Pulsa cualquier tecla para continuar...")
+        with open("./archivos/cursos.txt","r",encoding="utf8") as cursosTXT:
+            lineas = cursosTXT.readlines()
+            for linea in lineas:
+                if str(idCurso) == linea.split("|")[0]:
+                    verificador = True 
+                    break
+                else:
+                    verificador = False 
+            if verificador == False:
+                print("_"*35)
+                print("ID no existe!")
+                print("_"*35)
+                input("Pulsa cualquier tecla para continuar...")
+                cursosTXT.close()
+            elif verificador == True:
+                eleccionMod = input("\n¿Que dato quieres modificar?\n1.- Nombre\n2.- Dirección\nIngresa una opcion: ")
+                if eleccionMod == "1":
+                    descripcion = input("Ingresa la nueva descripcion del curso: ")
+                    print("_"*35)
+                    print("\nModificacion existosa!\n")
+                    print("_"*35)
+                    input("Pulsa cualquier tecla para continuar...")
+                elif eleccionMod == "2":
+                    idEmpleado = input("Ingresa el id del empleado que impartira el nuevo curso: ")
+                    print("_"*35)
+                    print("\nModificacion existosa!\n")
+                    print("_"*35)
+                    input("Pulsa cualquier tecla para continuar...")
+                else:
+                    print("_"*30)
+                    print("Opcion invalida.\nIntente de nuevo...")
+                    print("_"*30)
+                    input("Pulsa cualquier tecla para continuar...")
+                listaCambios = [] 
+                listaCambios2 = [] #En esta lista se guarda todos los datos incluidos los cambios
+                cursosTXT = open("./archivos/cursos.txt","r",encoding="utf8")
+                readlines = cursosTXT.readlines()
+                for line in readlines:
+                    line = line.replace("\n","")
+                    listaCambios.append(line)
+                for linea in listaCambios:
+                    datos = linea.split("|")
+                    if datos[0] == str(idCurso):
+                        if eleccionMod == "1":
+                            datosNuevos = datos[1].replace(datos[1], descripcion + "|" + datos[2])
+                            datosCambiados = (datos[0] + "|" + datosNuevos + "\n")
+                            listaCambios2.append(datosCambiados)
+                        elif eleccionMod == "2":
+                            datosNuevos = datos[1].replace(datos[1], datos[1] + "|" + idEmpleado)
+                            datosCambiados = (datos[0] + "|" + datosNuevos + "\n")
+                            listaCambios2.append(datosCambiados)
+                    else:
+                        datos = (linea + "\n")
+                        listaCambios2.append(datos)
+                cursosTXT.close()
+                cursosTXTW = open("./archivos/cursos.txt","w",encoding="utf8")
+                for i in listaCambios2:
+                    cursosTXTW.write(i)
+                cursosTXTW.close()
+       
 
-    @staticmethod
+    @staticmethod #Listo
     def mostrarCurso():
         print(f"{'ID':<5}{'DESCRIPCION':^10}{'IdEmpleado':>15}")
         print("_"*31)
