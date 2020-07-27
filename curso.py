@@ -173,7 +173,7 @@ class Curso:
                 cursosTXTW.close()
        
 
-    @staticmethod #Listo
+    @staticmethod 
     def mostrarCurso():
         print(f"{'ID':<5}{'DESCRIPCION':^10}{'IdEmpleado':>15}")
         print("_"*31)
@@ -184,7 +184,7 @@ class Curso:
         cursosTXT.close()
 
     @staticmethod
-    def buscarCurso(self):
+    def buscarCurso():
         while True:
             try:
                 idCurso = int(input("\nIntroduce el ID del curso que quieres buscar: "))
@@ -208,8 +208,8 @@ class Curso:
                 print("_"*35)
                 input("Pulsa cualquier tecla para continuar...")
             cursosTXT.close()
-        with open("./archivos/clases.txt","r",encoding="utf8") as clasesTXT:
-            for linea in clasesTXT:
+        with open("./archivos/cursos.txt","r",encoding="utf8") as cursosTXT:
+            for linea in cursosTXT:
                 datos = linea.split("|")
                 datoID = linea.split("|")[0]
                 if datoID == str(idCurso):

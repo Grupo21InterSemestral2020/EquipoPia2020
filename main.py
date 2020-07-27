@@ -94,7 +94,7 @@ while True:
                     time.sleep(.5)
 
                 elif eleccion == 5:
-                    Curso.mostrarCurso()
+                    Curso.buscarCurso()
                     time.sleep(.5)
 
                 elif eleccion == 6:
